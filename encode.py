@@ -2,9 +2,14 @@ import wave, random, sys, math
 from constants import END_SEQUENCE, FRAMES_PERIOD
 from pydub import AudioSegment
 
+print("=== RESONANCE: encode audio file ===\n")
+print("Audio file to encode with must be a .wav or .mp3. If it is an .mp3 file, ffmpeg should be installed.")
+print("Data file can be of any type.")
+print()
+
 inputfile = input("Enter audio file path: ")
-outputfile = input("Enter output file path (out.wav): ")
 datafile = input("Enter data file path: ")
+outputfile = input("Enter output file path (out.wav): ")
 
 if inputfile.endswith(".mp3"):
 	sound = AudioSegment.from_mp3(inputfile)
@@ -57,5 +62,7 @@ for byte in full_bytes_content:
 
 new_file.writeframes(bytes(frames))
 
+print()
 print("Encoded file exported to {} successfully.".format(outputfile))
+print()
 print("The frames period of {} was used.".format(FRAMES_PERIOD))

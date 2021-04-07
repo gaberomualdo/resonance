@@ -1,9 +1,14 @@
 from constants import END_SEQUENCE, FRAMES_PERIOD
 import wave
 
+print("=== RESONANCE: decode audio file ===\n")
+print("Encoded audio file must be a .wav.")
+print("Frames period is 20 by default. If you did not receive a message specifying a different frame period, use 20.")
+print()
+
 encodedfile = input("Enter encoded audio file path (out.wav): ")
-decodedfile = input("Enter decoded file path: ")
 new_frames_period = input("Enter frames period ({}): ".format(FRAMES_PERIOD))
+decodedfile = input("Enter decoded output path: ")
 
 if(len(new_frames_period) == 0):
 	new_frames_period = FRAMES_PERIOD
@@ -36,4 +41,5 @@ f = open(decodedfile, 'wb')
 f.write(bytearray(result))
 f.close()
 
+print()
 print("Decoded contents exported to {} successfully.".format(decodedfile))
